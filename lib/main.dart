@@ -7,13 +7,12 @@ void main() {
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
+    print('create state');
     return _MyApp();
   }
 }
 
-class _MyApp extends State<MyApp> { // 상태를 연결할 필요가 없는 위젯 
-  // const MyApp({super.key});
-
+class _MyApp extends State<MyApp> {
   String test = 'hello';
   Color _color = Colors.blue;
 
@@ -45,12 +44,23 @@ class _MyApp extends State<MyApp> { // 상태를 연결할 필요가 없는 위�
                   _color = Colors.blue;
                 });
               }
-              
             },
           )
         )
       )
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print('initSate');
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print('didChangeDependencies');
   }
 }
 
