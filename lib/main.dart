@@ -1,66 +1,28 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_test_app/largeFileMain.dart';
+import 'package:flutter_test_app/secondDetail.dart';
+import 'package:flutter_test_app/subdetail.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-void main() {
-  runApp( MyApp());
-}
+// 18 navigation2
+void main() => runApp( MyApp());
 
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    print('create state');
-    return _MyApp();
-  }
-}
-
-class _MyApp extends State<MyApp> {
-  String test = 'hello';
-  Color _color = Colors.blue;
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'SubPage2 Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      darkTheme: ThemeData.light(),
-      home: Scaffold(
-        body: Center(
-          child: ElevatedButton(
-            child: Text('$test'),
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(_color)
-            ),
-            onPressed: () {
-              if (_color == Colors.blue) {
-                setState(() {
-                test = 'flutter';
-                _color = Colors.amber;
-              });
-              } else {
-                setState(() {
-                  test = 'hello';
-                  _color = Colors.blue;
-                });
-              }
-            },
-          )
-        )
-      )
+      // home: FirstPage(),
+      initialRoute: '/',
+      routes: {'/': (context) => SubDetail(), '/second': (context) => SecondDetail()},
+      
     );
   }
-
-  @override
-  void initState() {
-    super.initState();
-    print('initSate');
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    print('didChangeDependencies');
-  }
 }
-
