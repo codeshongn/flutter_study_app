@@ -39,6 +39,7 @@ dependencies:
   dio: ^4.0.0
   path_provider: ^2.0.2
   shared_preferences: 2.0.6
+  sqflite: ^2.0.0+3
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +74,7 @@ flutter:
     - image/pig.png
     - image/wolf.png
     - image/monkey.png
+    - repo/fruit.txt
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
