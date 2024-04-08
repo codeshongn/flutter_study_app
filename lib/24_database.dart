@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_app/todo.dart';
 import 'package:sqflite/sqflite.dart';
 
 
@@ -25,5 +26,11 @@ class _DatabaseApp extends State<DatabaseApp> {
         child: Icon(Icons.add)),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+
+  void _insertTodo(Todo todo) async {
+    final Database database = await widget.db;
+    await database.insert('jtodos', todo.toMap(),
+    conflictAlgorithm: ConflictAlgorithm.replace);
   }
 }
