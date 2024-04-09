@@ -11,7 +11,7 @@ class Todo {
       'id': id,
       'title': title,
       'content': content,
-      'acvite': active
+      'active': active
     };
   }
 }

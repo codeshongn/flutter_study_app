@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test_app/24_add.dart';
+import 'package:flutter_test_app/24_clearList.dart';
 import 'package:flutter_test_app/24_database.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => DatabaseApp(database),
-        '/add': (context) => AddTodoApp(database)
+        '/add': (context) => AddTodoApp(database),
+        '/clear': (context) => ClearList(database)
       }
     );
   }
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
       join(await getDatabasesPath(), 'todo_database.db'),
       onCreate: (db, version) {
         return db.execute(
-          "CREATE TABLE todos(id INTERGER PRIMARY KEY AUTOINCREMENT, "
+          "CREATE TABLE todos(id INTEGER PRIMARY KEY AUTOINCREMENT, "
           "title TEXT, content TEXT, active INTEGER)",
         );
       },
