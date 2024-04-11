@@ -76,6 +76,9 @@ flutter:
     - image/wolf.png
     - image/monkey.png
     - repo/fruit.txt
+    - image/circle.png
+    - image/saturn.png
+    - image/sunny.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
