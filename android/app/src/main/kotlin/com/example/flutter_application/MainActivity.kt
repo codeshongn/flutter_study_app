@@ -10,6 +10,7 @@ import androidx.annotation.NonNull
 class MainActivity: FlutterActivity() {
     private val CHANNEL = "com.flutter.dev/info"
     private val CHANNEL2 = "com.flutter.dev/encrypto"
+    private val CHANNEL3 = "com.flutter.dev/dialog"
 
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
@@ -26,8 +27,21 @@ class MainActivity: FlutterActivity() {
                         val data = call.arguments.toString().toByteArray()
                         val changeText = Base64.encodeToString(data, Base64.DEFAULT)
                         result.success(changeText)
+                    } else if (call.method == "getDecrypto") {
+                        val data = call.arguments.toString()
+                        val changeText = Base64.decode(data, Base64.DEFAULT)
+                        result.success(String(changeText))
                     }
                 }
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL3)
+            .setMethodCallHandler { call, result ->
+                if (call.method == "showDialog") {
+                    AlertDialog.Builder(this)
+                        .setTitle("Flutter")
+                        .setMessage("Native popup")
+                        .show()
+                }
+            }
     }
 }
 
@@ -38,3 +52,4 @@ private fun getDeviceInfo(): String {
     sb.append(Build.MODEL + "\n")
     return sb.toString()
 }
+
