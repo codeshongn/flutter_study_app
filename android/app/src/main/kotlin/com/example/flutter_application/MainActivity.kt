@@ -6,6 +6,7 @@ import io.flutter.plugin.common.MethodChannel
 import android.os.Build
 import android.util.Base64
 import androidx.annotation.NonNull
+import android.app.AlertDialog
 
 class MainActivity: FlutterActivity() {
     private val CHANNEL = "com.flutter.dev/info"
